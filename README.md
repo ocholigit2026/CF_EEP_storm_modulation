@@ -6,31 +6,35 @@ function-energetic electron precipitation relationship* (Ocholi et al., 2026).
 ## Structure
 
 ```
-data/
+ functions/
   load_and_prepare_data.m      Loads and time-aligns solar wind, coupling
                                 function, and POES/MetOp MEPED EEP flux data
-
-storms/
-  identify_storms.m            Storm identification, epoch extraction, and
+  identify_storms_new.m        Storm identification, epoch extraction, and
                                 weak/moderate/intense classification
   select_peak_events.m         Helper: enforces minimum separation between
                                 candidate storm peaks
+  extract_flux_timeseries_daily.m    Extract satellite data from defined L-shell
+                                       range
+  CFs_daily_mean.m              Calculate daily averages of coupling functions from
+                                  hourly data.   
+     
+ data/
+  generate_table1_regression_results.m   Table 1: storm-regime regression
 
-analysis/
-  generate_table1_storm_distribution.m   Table 1: storm counts by regime
-  generate_table2_regression_results.m   Table 2: storm-regime regression
-
-figures/
+ figures/
   generate_figure1_lagged_correlation.m       Figure 1
   generate_figure2_integration_window.m       Figure 2
-  generate_figure3_normalized_binned_response.m  Figure 3
-  generate_figure4_native_binned_response.m      Figure 4
+  generate_figure3_native_binned_response.m      Figure 3
+  generate_figure4_normalized_binned_response.m  Figure 4
+  generate_figure1_daily.m      Figure S1
+  generate_figure2_daily.m      Figure S2
+
 ```
 
 ## Usage
 
-Each script in `analysis/` and `figures/` is self-contained: it calls
-`load_and_prepare_data` and `identify_storms`, then performs its analysis.
+Each script in `data/` and `figures/` is self-contained: it calls
+`load_and_prepare_data_new` and `identify_storms_new`, then performs its analysis.
 Run any script directly from within its folder (each adds `../data` and
 `../storms` to the path).
 
